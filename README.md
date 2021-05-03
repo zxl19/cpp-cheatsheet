@@ -1,20 +1,19 @@
-<a href="https://github.com/mortennobel/cpp-cheatsheet"><img align="right" src="https://camo.githubusercontent.com/38ef81f8aca64bb9a64448d0d70f1308ef5341ab/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f6461726b626c75655f3132313632312e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png"></a>
+<!-- <a href="https://github.com/mortennobel/cpp-cheatsheet"><img align="right" src="https://camo.githubusercontent.com/38ef81f8aca64bb9a64448d0d70f1308ef5341ab/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f6461726b626c75655f3132313632312e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png"></a> -->
 
 # C++ QUICK REFERENCE / C++ CHEATSHEET
-Based on <a href="http://www.pa.msu.edu/~duxbury/courses/phy480/Cpp_refcard.pdf">Phillip M. Duxbury's C++ Cheatsheet</a> and edited by Morten Nobel-Jørgensen.
-The cheatsheet focus is both on the language as well as common classes from the standard library.
-C++11 additions is inspired by <a href="https://isocpp.org/blog/2012/12/c11-a-cheat-sheet-alex-sinyakov">ISOCPP.org C++11 Cheatsheet</a>).
+
+Based on <a href="http://www.pa.msu.edu/~duxbury/courses/phy480/Cpp_refcard.pdf">Phillip M. Duxbury's C++ Cheatsheet</a> and edited by Morten Nobel-Jørgensen. The cheatsheet focus is both on the language as well as common classes from the standard library. C++11 additions is inspired by <a href="https://isocpp.org/blog/2012/12/c11-a-cheat-sheet-alex-sinyakov">ISOCPP.org C++11 Cheatsheet</a>).
 
 The goal is to give a concise overview of basic, modern C++ (C++14).
 
-The document is hosted on https://github.com/mortennobel/cpp-cheatsheet. Any comments and feedback are appreciated.
+The document is hosted on <https://github.com/mortennobel/cpp-cheatsheet>. Any comments and feedback are appreciated.
 
 ## Preprocessor
 
 ```cpp
                             // Comment to end of line
                             /* Multi-line comment */
-#include  <stdio.h>         // Insert standard header file
+#include <stdio.h>          // Insert standard header file
 #include "myfile.h"         // Insert file in current directory
 #define X some text         // Replace X with some text
 #define F(a,b) a+b          // Replace F(1,2) with 1+2
@@ -145,9 +144,7 @@ T operator++(int);          // postfix ++ or -- (parameter ignored)
 extern "C" {void f();}      // f() was compiled in C
 ```
 
-Function parameters and return values may be of any type. A function must either be declared or defined before
-it is used. It may be declared first and defined later. Every program consists of a set of a set of global variable
-declarations and a set of function definitions (possibly in separate files), one of which must be:
+Function parameters and return values may be of any type. A function must either be declared or defined before it is used. It may be declared first and defined later. Every program consists of a set of a set of global variable declarations and a set of function definitions (possibly in separate files), one of which must be:
 
 ```cpp
 int main()  { statements... }     // or
@@ -162,9 +159,7 @@ Precedence order is not affected. New operators may not be created.
 
 ## Expressions
 
-Operators are grouped by precedence, highest first. Unary operators and assignment evaluate right to left. All
-others are left to right. Precedence does not affect order of evaluation, which is undefined. There are no run time
-checks for arrays out of bounds, invalid pointers, etc.
+Operators are grouped by precedence, highest first. Unary operators and assignment evaluate right to left. All others are left to right. Precedence does not affect order of evaluation, which is undefined. There are no run time checks for arrays out of bounds, invalid pointers, etc.
 
 ```cpp
 T::X                        // Name X defined in class T
@@ -277,10 +272,7 @@ class X: public virtual T {};
                             // Classes derived from X have base T directly
 ```
 
-All classes have a default copy constructor, assignment operator, and destructor, which perform the
-corresponding operations on each data member and each base class as shown above. There is also a default no-argument
-constructor (required to create arrays) if the class has no constructors. Constructors, assignment, and
-destructors do not inherit.
+All classes have a default copy constructor, assignment operator, and destructor, which perform the corresponding operations on each data member and each base class as shown above. There is also a default no-argument constructor (required to create arrays) if the class has no constructors. Constructors, assignment, and destructors do not inherit.
 
 ## Templates
 
@@ -312,15 +304,15 @@ x = make_shared<int>(12);   // Allocate value 12 on heap
 shared_ptr<int> y = x;      // Copy shared_ptr, implicit changes reference count to 2.
 cout << *y;                 // Dereference y to print '12'
 if (y.get() == x.get()) {   // Raw pointers (here x == y)
-    cout << "Same";  
-}  
+    cout << "Same";
+}
 y.reset();                  // Eliminate one owner of object
-if (y.get() != x.get()) { 
-    cout << "Different";  
-}  
+if (y.get() != x.get()) {
+    cout << "Different";
+}
 if (y == nullptr) {         // Can compare against nullptr (here returns true)
-    cout << "Empty";  
-}  
+    cout << "Empty";
+}
 y = make_shared<int>(15);   // Assign new value
 cout << *y;                 // Dereference x to print '15'
 cout << *x;                 // Dereference x to print '12'
@@ -506,12 +498,13 @@ reverse(a.begin(), a.end()); // Reverse vector or deque
 ```
 
 ## `chrono` (Time related library)
+
 ```cpp
 #include <chrono>         // Include chrono
 using namespace std::chrono; // Use namespace
 auto from =               // Get current time_point
   high_resolution_clock::now();
-// ... do some work       
+// ... do some work
 auto to =                 // Get current time_point
   high_resolution_clock::now();
 using ms =                // Define ms as floating point duration
@@ -522,9 +515,10 @@ cout << duration_cast<ms>(to - from)
 ```
 
 ## `thread` (Multi-threading library)
+
 ```cpp
 #include <thread>         // Include thread
-unsigned c = 
+unsigned c =
   hardware_concurrency(); // Hardware threads (or 0 for unknown)
 auto lambdaFn = [](){     // Lambda function used for thread body
     cout << "Hello multithreading";
@@ -540,15 +534,15 @@ const char* sharedMes              // Shared resource
 auto pingPongFn =                  // thread body (lambda). Print someone else's message
   [&](const char* mes){
     while (true){
-      unique_lock<mutex> lock(mut);// locks the mutex 
-      do {                
-        cond.wait(lock, [&](){     // wait for condition to be true (unlocks while waiting which allows other threads to modify)        
+      unique_lock<mutex> lock(mut);// locks the mutex
+      do {
+        cond.wait(lock, [&](){     // wait for condition to be true (unlocks while waiting which allows other threads to modify)
           return sharedMes != mes; // statement for when to continue
         });
       } while (sharedMes == mes);  // prevents spurious wakeup
       cout << sharedMes << endl;
-      sharedMes = mes;       
-      lock.unlock();               // no need to have lock on notify 
+      sharedMes = mes;
+      lock.unlock();               // no need to have lock on notify
       cond.notify_all();           // notify all condition has changed
     }
   };
@@ -559,6 +553,7 @@ thread t3(pingPongFn, "boing");
 ```
 
 ## `future` (thread support library)
+
 ```cpp
 #include <future>         // Include future
 function<int(int)> fib =  // Create lambda function
@@ -566,11 +561,11 @@ function<int(int)> fib =  // Create lambda function
     if (i <= 1){
       return 1;
     }
-    return fib(i-1) 
+    return fib(i-1)
          + fib(i-2);
   };
 future<int> fut =         // result of async function
   async(launch::async, fib, 4); // start async function in other thread
-// do some other work 
+// do some other work
 cout << fut.get();        // get result of async function. Wait if needed.
 ```
